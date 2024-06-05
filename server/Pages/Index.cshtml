@@ -1,0 +1,27 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="text-center">
+    <h1 class="display-4">@Model.Title</h1>
+    @foreach (var room in @Model.RoomDatas) {
+        <h3 class="mt-5">@room.RoomName</h3>
+        <div>Диапазон значений: температура @room.TemperatureInterval°C, влажность @room.HumidityInterval%, освещённость @room.LightInterval лк</div>
+        <table class="table">
+            <thead><tr><th>date</th><th>temperature</th><th>humidity</th><th>light</th></tr></thead>
+            <tbody>
+            @foreach(var record in room.Records){
+                <tr>
+                    <td>@record.Date</td>
+                    <td style="color: @record.TemperatureColor;">@record.Temperature.ToString("n0")</td>
+                    <td style="color: @record.HumidityColor;">@record.Humidity.ToString("n0")</td>
+                    <td style="color: @record.LightColor;">@record.Light.ToString("n0")</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+    
+</div>

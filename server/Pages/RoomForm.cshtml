@@ -1,0 +1,38 @@
+﻿@page
+@model RoomFormModel
+@{
+    ViewData["Title"] = Model.Title;
+
+}
+<h1>@Model.Title</h1>
+<form method="post">
+    <input type="hidden" asp-for="Room.Id" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="Room.Name" class="form-label">Название</label>
+        <input asp-for="Room.Name" class="form-control" />
+        <span asp-validation-for="Room.Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+
+        <label asp-for="Room.MinTemp" class="form-label">Температура (диапазон)</label>
+        <div class="input-group">
+            <input asp-for="Room.MinTemp" class="form-control" />
+            <input asp-for="Room.MaxTemp" class="form-control ml-1" />
+        </div>
+        
+        <label asp-for="Room.MinTemp" class="form-label">Влажность (диапазон)</label>
+        <div class="input-group">
+            <input asp-for="Room.MinHum" class="form-control" />
+            <input asp-for="Room.MaxHum" class="form-control ml-1" />
+        </div>
+        
+        <label asp-for="Room.MinTemp" class="form-label">Освещённость (диапазон)</label>
+        <div class="input-group">
+            <input asp-for="Room.MinLight" class="form-control" />
+            <input asp-for="Room.MaxLight" class="form-control ml-1" />
+        </div>
+        
+    </div>
+    <input type="submit" value="Сохранить" class="btn btn-primary" />
+</form>

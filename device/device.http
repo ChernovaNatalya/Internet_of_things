@@ -1,0 +1,6 @@
+@device_HostAddress = http://localhost:5120
+
+GET {{device_HostAddress}}
+Accept: application/json
+
+###

@@ -1,0 +1,41 @@
+﻿@page
+@model AdministrationModel
+@{
+    ViewData["Title"] = Model.Title;
+
+}
+<h1>@Model.Title</h1>
+<div><a class="btn btn-primary" href="/RoomForm">Добавить</a></div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Название</th>
+            <th>Температура</th>
+            <th>Влажность</th>
+            <th>Освещённость</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var room in Model.Rooms)
+        {
+            <tr>
+                <td>@room.Id</td>
+                <td>@room.Name</td>
+                <td>@room.MinTemp - @room.MaxTemp</td>
+                <td>@room.MinHum - @room.MaxHum</td>
+                <td>@room.MinLight - @room.MaxLight</td>
+                <td>
+                    <form method="post"><button class="btn btn-primary" type="submit" asp-page-handler="delete"
+                            asp-route-id="@room.Id">Удалить</button></form>
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="/RoomForm?id=@room.Id">Изменить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
